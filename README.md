@@ -16,7 +16,7 @@ This function is used to insert data into a specified database table. It takes a
 **Note The `$data` is an array that its keys the column name, and its value is the real data that we want to add it into our DB** 
 ```php
 $data = [
-  "name" => $name
+  'column_name' => 'value'
 ]
 ```
 

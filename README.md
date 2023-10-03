@@ -11,6 +11,30 @@ This function takes **an associative array** as input and returns a flattened ar
 `Array`: an array containing the flattened key-value pairs from the input array.
 
 
+**For example:**
+```php
+$data = [
+  "key1" => "value1",
+  "key2" => "value2",
+  "key3" => "value3",
+  "key4" => "value4"
+];
+
+print_r(array_flatten($data))
+// The output:
+// Array
+// (
+//     [0] => key1
+//     [1] => value1
+//     [2] => key2
+//     [3] => value2
+//     [4] => key3
+//     [5] => value3
+//     [6] => key4
+//     [7] => value4
+// )
+```
+
 ## add:
 This function is used to insert data into a specified database table. It takes a variable number of arguments, where each pair of arguments represents a column and its corresponding value. The function constructs an `SQL INSERT` statement dynamically based on the provided table name and arguments. It then prepares and executes the SQL statement using a PDO connection.
 

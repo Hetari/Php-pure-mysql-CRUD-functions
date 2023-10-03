@@ -46,6 +46,16 @@ If the SELECT query returns any rows, the function returns **an array of associa
 If no rows match the conditions, **an empty array is returned**.
 
 
+**Note `$conditions` is a 2D array that take any number of sql conditions so in the inner array the key is `column name` and the value is another array that has the opration and the value, for example**
+
+```php
+$conditions = array(
+    array("email" => ["=", $email]),
+);
+```
+**Here we say in sql `Where email = $email`**
+
+
 ## update:
 This function is used to update data in a specified database table. It takes three 
 

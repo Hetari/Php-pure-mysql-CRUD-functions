@@ -13,6 +13,12 @@ This function takes **an associative array** as input and returns a flattened ar
 
 ## add:
 This function is used to insert data into a specified database table. It takes a variable number of arguments, where each pair of arguments represents a column and its corresponding value. The function constructs an `SQL INSERT` statement dynamically based on the provided table name and arguments. It then prepares and executes the SQL statement using a PDO connection.
+**Note The `$data` is an array that its keys the column name, and its value is the real data that we want to add it into our DB** 
+```php
+$data = [
+  "name" => $name
+]
+```
 
 #### Parameters:
 1. `$table` (string): The name of the table where the data will be inserted.

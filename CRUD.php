@@ -65,7 +65,7 @@ function add($table, ...$args)
  *
  * @return array|false Returns an array of selected rows as associative arrays, or an empty array if no rows are found. Returns false if there was an error.
  */
-function select($table, $conditions = array(), $columns = '*')
+function select($table, $conditions = array(), $columns = '*', $operator = "AND")
 {
     try {
         global $con;
@@ -80,22 +80,21 @@ function select($table, $conditions = array(), $columns = '*')
                 $column = key($condition);
                 $value = $condition[$column];
 
-                // Handle different comparison operators
-                $operator = '=';
+                // Handle different comparison operations
+                $operation = '=';
                 if (is_array($value)) {
-                    [$operator, $value] = $value;
+                    [$operation, $value] = $value;
                 }
 
-                $conditionsArr[] = "{$column} {$operator} ?";
+                $conditionsArr[] = "{$column} {$operation} ?";
                 $values[] = $value;
             }
-            $where .= implode(' AND ', $conditionsArr);
+            $where .= implode(' ' . $operator . ' ', $conditionsArr);
         }
 
         // Build the SQL statement
         $sql = "SELECT {$columns} FROM {$table} {$where}";
         $stmt = $con->prepare($sql);
-
         // Execute the statement with the values array
         $stmt->execute($values);
 

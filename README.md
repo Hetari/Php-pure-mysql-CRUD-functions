@@ -63,6 +63,7 @@ This function is used to retrieve data from a specified database table based on 
 1. `$table (string)`: The name of the table from which to select data.
 2. `$conditions (array)`: Optional. An array of conditions to filter the data. Each condition is represented as an associative array with the column name as the key and the condition value as the value. The condition value can be a single value or an array containing the comparison operator and the value.
 3. `$columns` (string): Optional. The columns to select from the table. By default, it selects all columns (*).
+4. `$operator` (string): Optional. The `AND`, or `OR` keywords in sql.
 
 #### Returns:
 If the SELECT query returns any rows, the function returns **an array of associative arrays representing the selected rows**. Each associative array represents a row, where the keys are the column names and the values are the corresponding values.
@@ -124,9 +125,10 @@ The add function is used to insert data into the "users" table. The $data array 
 ## Call select function
 ```php
 $conditions = array(
-    array("email" => ["=", $email]),
+    array("ID" => [">", 9]),
+    array("Name" => ["like", "%bro"])
 );
-$results = select("users", $conditions, "*");
+$users = select("users", $conditions, "name", "or");
 ```
 The select function is used to retrieve data from the "users" table based on the provided conditions. The $conditions array contains a single condition to match the "email" column with the provided value. 
 
